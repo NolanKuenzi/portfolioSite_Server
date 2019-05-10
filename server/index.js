@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const routes = require('./routes');
 
 app.get('/', (req, res) => {
-    res.redirect('http://localhost:8080/');
+    res.redirect('https://nolankuenzi.github.io/');
 });
 app.use('/', routes);
 
