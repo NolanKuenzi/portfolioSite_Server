@@ -2,10 +2,15 @@ const router = require('express').Router();
 const nodemailer = require('nodemailer');
 const password = require('./nodemailerAuth.js');
 
-router.post('/send', (req, res) => {
+router.post('/send/:host?', (req, res) => {
   if (req.body.name === '' || req.body.email === '' || req.body.message === '') {
-    res.redirect('https://nolankuenzi.github.io/#/contact/');
-    return;
+    if (req.params.host === 'netlify') {
+      res.redirect('https://pensive-swirles-801772.netlify.com/#/contact/');
+      return;
+    } else if (req.params.host === 'github') {
+      res.redirect('https://nolankuenzi.github.io/#/contact/');
+      return;      
+    }
   }
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -21,7 +26,13 @@ router.post('/send', (req, res) => {
     text: `From: ${req.body.name}, Email: ${req.body.email}, Message: ${req.body.message}`,
   };
   transporter.sendMail(mailOptions);
-  res.redirect('https://nolankuenzi.github.io/#/contact/');
+  if (req.params.host === 'netlify') {
+    res.redirect('https://pensive-swirles-801772.netlify.com/#/contact/');
+    return;
+  } else if (req.params.host === 'github') {
+      res.redirect('https://nolankuenzi.github.io/#/contact/');
+      return;      
+  }
 });
 
 module.exports = router;
