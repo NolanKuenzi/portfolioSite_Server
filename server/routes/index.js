@@ -5,7 +5,7 @@ const password = require('./nodemailerAuth.js');
 router.post('/send/:host?', (req, res) => {
   if (req.body.name === '' || req.body.email === '' || req.body.message === '') {
     if (req.params.host === 'netlify') {
-      res.redirect('https://pensive-swirles-801772.netlify.com/#/contact/');
+      res.redirect('https://www.nekuenzi.com/#/contact/');
       return;
     } else if (req.params.host === 'github') {
       res.redirect('https://nolankuenzi.github.io/#/contact/');
@@ -27,7 +27,7 @@ router.post('/send/:host?', (req, res) => {
   };
   transporter.sendMail(mailOptions);
   if (req.params.host === 'netlify') {
-    res.redirect('https://pensive-swirles-801772.netlify.com/#/contact/');
+    res.redirect('https://www.nekuenzi.com/#/contact/');
     return;
   } else if (req.params.host === 'github') {
       res.redirect('https://nolankuenzi.github.io/#/contact/');
