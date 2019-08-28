@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
+const { body, sanitizeBody, validationResult } = require('express-validator');
 
 router.post('/send/:host?', (req, res) => {
   if (req.body.name === '' || req.body.email === '' || req.body.message === '') {
