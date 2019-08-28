@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
-const password = require('./nodemailerAuth.js');
 
 router.post('/send/:host?', (req, res) => {
   if (req.body.name === '' || req.body.email === '' || req.body.message === '') {
