@@ -16,7 +16,7 @@ router.post('/send/:host?', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'mr.nolank@gmail.com',
-      pass: password.nodemailerPass,
+      pass: process.env.PASSWORD,
     },
   });
   const mailOptions = {
